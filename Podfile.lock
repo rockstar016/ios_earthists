@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (3.5.0)
+  - Dodo (2.2.1)
+  - M13ProgressSuite (1.2.7)
+  - MBProgressHUD (1.0.0)
+  - Stripe (8.0.7)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, tag `3.5.0`)
+  - Dodo (~> 2.0)
+  - M13ProgressSuite (from `https://github.com/Marxon13/M13ProgressSuite.git`, tag `v1.2.7`)
+  - MBProgressHUD
+  - Stripe (~> 8.0.7)
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+    :tag: 3.5.0
+  M13ProgressSuite:
+    :git: https://github.com/Marxon13/M13ProgressSuite.git
+    :tag: v1.2.7
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+    :tag: 3.5.0
+  M13ProgressSuite:
+    :git: https://github.com/Marxon13/M13ProgressSuite.git
+    :tag: v1.2.7
+
+SPEC CHECKSUMS:
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  Dodo: 9c9a368ec6c869928429c691eecc926889882a2d
+  M13ProgressSuite: 4642db3df66a61f512ba2caded404637f9788eb6
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Stripe: 2bb9646115745d0ee8c7799e6872c57ba5dc6cc5
+
+PODFILE CHECKSUM: 9ae94d9c1ab1c71afcd4e9273b5ef3ad68e79592
+
+COCOAPODS: 1.1.1

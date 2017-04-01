@@ -1,0 +1,718 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02597B3EB76EBE7F174D1A39 /* Pods_Earthistic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */; };
+		CC0C279E1E41298F0060DF04 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C279D1E41298F0060DF04 /* SaveViewController.swift */; };
+		CC0C27A01E4192220060DF04 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C279F1E4192220060DF04 /* LinkViewController.swift */; };
+		CC0C27A21E41C1DD0060DF04 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C27A11E41C1DD0060DF04 /* MyLabel.swift */; };
+		CC0C27A41E41C23D0060DF04 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C27A31E41C23D0060DF04 /* Constants.swift */; };
+		CC14C31E1E37D59800F400FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C31D1E37D59800F400FB /* AppDelegate.swift */; };
+		CC14C3201E37D59800F400FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C31F1E37D59800F400FB /* ViewController.swift */; };
+		CC14C3231E37D59800F400FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC14C3211E37D59800F400FB /* Main.storyboard */; };
+		CC14C3251E37D59800F400FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC14C3241E37D59800F400FB /* Assets.xcassets */; };
+		CC14C3281E37D59800F400FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC14C3261E37D59800F400FB /* LaunchScreen.storyboard */; };
+		CC14C3331E37D59800F400FB /* EarthisticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C3321E37D59800F400FB /* EarthisticTests.swift */; };
+		CC14C33E1E37D59800F400FB /* EarthisticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C33D1E37D59800F400FB /* EarthisticUITests.swift */; };
+		CC14C34D1E37E09100F400FB /* MemberPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C34C1E37E09100F400FB /* MemberPictureCell.swift */; };
+		CC14C34F1E3947CA00F400FB /* MemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C34E1E3947CA00F400FB /* MemberInfoController.swift */; };
+		CC14C3521E3949EC00F400FB /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14C3511E3949EC00F400FB /* MemberModel.swift */; };
+		CC2A47F21E45F548001549AE /* EndPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A47F11E45F548001549AE /* EndPageController.swift */; };
+		CC55399F1E3D68960096B533 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC55399E1E3D68960096B533 /* SignUpViewController.swift */; };
+		CC5539A11E3D68AE0096B533 /* ForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5539A01E3D68AE0096B533 /* ForgetViewController.swift */; };
+		CC5D270A1E431F66008B8973 /* MyAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D27091E431F66008B8973 /* MyAlamofire.swift */; };
+		CC6652551E3AB46400247670 /* CauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6652541E3AB46400247670 /* CauseViewController.swift */; };
+		CC6652571E3AF77500247670 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6652561E3AF77500247670 /* CustomUIView.swift */; };
+		CC6652591E3B1D7400247670 /* InvestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6652581E3B1D7400247670 /* InvestViewController.swift */; };
+		CC782E371E4913F200C1C1A1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E361E4913F200C1C1A1 /* Bolts.framework */; };
+		CC782E3A1E49140500C1C1A1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */; };
+		CC782E3B1E49140500C1C1A1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */; };
+		CC782E3D1E49141D00C1C1A1 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */; };
+		CC782E3F1E4920D800C1C1A1 /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */; };
+		CC7CA7E81E43417200FC7661 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7CA7E71E43417200FC7661 /* CheckboxButton.swift */; };
+		CC7CA7EA1E4350A800FC7661 /* MyAPIS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7CA7E91E4350A800FC7661 /* MyAPIS.swift */; };
+		CC9163511E4A301600EF5193 /* UIBorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9163501E4A301600EF5193 /* UIBorderedLabel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC14C32F1E37D59800F400FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC14C3121E37D59800F400FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC14C3191E37D59800F400FB;
+			remoteInfo = Earthistic;
+		};
+		CC14C33A1E37D59800F400FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC14C3121E37D59800F400FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC14C3191E37D59800F400FB;
+			remoteInfo = Earthistic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Earthistic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4882799187495FDB46C04B46 /* Pods-Earthistic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earthistic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic.release.xcconfig"; sourceTree = "<group>"; };
+		582A6EF137CCB7E1120FAE34 /* Pods-Earthistic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earthistic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic.debug.xcconfig"; sourceTree = "<group>"; };
+		CC0C279D1E41298F0060DF04 /* SaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
+		CC0C279F1E4192220060DF04 /* LinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
+		CC0C27A11E41C1DD0060DF04 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
+		CC0C27A31E41C23D0060DF04 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CC14C31A1E37D59800F400FB /* Earthistic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthistic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC14C31D1E37D59800F400FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC14C31F1E37D59800F400FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC14C3221E37D59800F400FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC14C3241E37D59800F400FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC14C3271E37D59800F400FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC14C3291E37D59800F400FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC14C32E1E37D59800F400FB /* EarthisticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthisticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC14C3321E37D59800F400FB /* EarthisticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthisticTests.swift; sourceTree = "<group>"; };
+		CC14C3341E37D59800F400FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC14C3391E37D59800F400FB /* EarthisticUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthisticUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC14C33D1E37D59800F400FB /* EarthisticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthisticUITests.swift; sourceTree = "<group>"; };
+		CC14C33F1E37D59800F400FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC14C34C1E37E09100F400FB /* MemberPictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPictureCell.swift; sourceTree = "<group>"; };
+		CC14C34E1E3947CA00F400FB /* MemberInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberInfoController.swift; sourceTree = "<group>"; };
+		CC14C3511E3949EC00F400FB /* MemberModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		CC2A47F01E45CE16001549AE /* Earthistic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthistic-Bridging-Header.h"; sourceTree = "<group>"; };
+		CC2A47F11E45F548001549AE /* EndPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPageController.swift; sourceTree = "<group>"; };
+		CC55399E1E3D68960096B533 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC5539A01E3D68AE0096B533 /* ForgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetViewController.swift; sourceTree = "<group>"; };
+		CC5D27091E431F66008B8973 /* MyAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAlamofire.swift; sourceTree = "<group>"; };
+		CC6652541E3AB46400247670 /* CauseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CauseViewController.swift; sourceTree = "<group>"; };
+		CC6652561E3AF77500247670 /* CustomUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		CC6652581E3B1D7400247670 /* InvestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestViewController.swift; sourceTree = "<group>"; };
+		CC782E361E4913F200C1C1A1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
+		CC7CA7E71E43417200FC7661 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		CC7CA7E91E4350A800FC7661 /* MyAPIS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIS.swift; sourceTree = "<group>"; };
+		CC9163501E4A301600EF5193 /* UIBorderedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBorderedLabel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC14C3171E37D59800F400FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02597B3EB76EBE7F174D1A39 /* Pods_Earthistic.framework in Frameworks */,
+				CC782E3A1E49140500C1C1A1 /* FBSDKCoreKit.framework in Frameworks */,
+				CC782E3D1E49141D00C1C1A1 /* FBSDKShareKit.framework in Frameworks */,
+				CC782E3B1E49140500C1C1A1 /* FBSDKLoginKit.framework in Frameworks */,
+				CC782E371E4913F200C1C1A1 /* Bolts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C32B1E37D59800F400FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C3361E37D59800F400FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FC2497B884E92B05B09E438 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */,
+				CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */,
+				CC782E361E4913F200C1C1A1 /* Bolts.framework */,
+				CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */,
+				CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */,
+				40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8378A6F74CF5AA59F4631484 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				582A6EF137CCB7E1120FAE34 /* Pods-Earthistic.debug.xcconfig */,
+				4882799187495FDB46C04B46 /* Pods-Earthistic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CC14C3111E37D59800F400FB = {
+			isa = PBXGroup;
+			children = (
+				CC2A47F01E45CE16001549AE /* Earthistic-Bridging-Header.h */,
+				CC14C31C1E37D59800F400FB /* Earthistic */,
+				CC14C3311E37D59800F400FB /* EarthisticTests */,
+				CC14C33C1E37D59800F400FB /* EarthisticUITests */,
+				CC14C31B1E37D59800F400FB /* Products */,
+				8378A6F74CF5AA59F4631484 /* Pods */,
+				5FC2497B884E92B05B09E438 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CC14C31B1E37D59800F400FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC14C31A1E37D59800F400FB /* Earthistic.app */,
+				CC14C32E1E37D59800F400FB /* EarthisticTests.xctest */,
+				CC14C3391E37D59800F400FB /* EarthisticUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC14C31C1E37D59800F400FB /* Earthistic */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D27081E431F55008B8973 /* Defines */,
+				CC14C3501E3949DC00F400FB /* Model */,
+				CC14C34B1E37E03A00F400FB /* CustomCell */,
+				CC14C31D1E37D59800F400FB /* AppDelegate.swift */,
+				CC14C31F1E37D59800F400FB /* ViewController.swift */,
+				CC14C34E1E3947CA00F400FB /* MemberInfoController.swift */,
+				CC6652541E3AB46400247670 /* CauseViewController.swift */,
+				CC6652581E3B1D7400247670 /* InvestViewController.swift */,
+				CC55399E1E3D68960096B533 /* SignUpViewController.swift */,
+				CC5539A01E3D68AE0096B533 /* ForgetViewController.swift */,
+				CC0C279F1E4192220060DF04 /* LinkViewController.swift */,
+				CC0C279D1E41298F0060DF04 /* SaveViewController.swift */,
+				CC2A47F11E45F548001549AE /* EndPageController.swift */,
+				CC14C3211E37D59800F400FB /* Main.storyboard */,
+				CC14C3241E37D59800F400FB /* Assets.xcassets */,
+				CC14C3261E37D59800F400FB /* LaunchScreen.storyboard */,
+				CC14C3291E37D59800F400FB /* Info.plist */,
+			);
+			path = Earthistic;
+			sourceTree = "<group>";
+		};
+		CC14C3311E37D59800F400FB /* EarthisticTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC14C3321E37D59800F400FB /* EarthisticTests.swift */,
+				CC14C3341E37D59800F400FB /* Info.plist */,
+			);
+			path = EarthisticTests;
+			sourceTree = "<group>";
+		};
+		CC14C33C1E37D59800F400FB /* EarthisticUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CC14C33D1E37D59800F400FB /* EarthisticUITests.swift */,
+				CC14C33F1E37D59800F400FB /* Info.plist */,
+			);
+			path = EarthisticUITests;
+			sourceTree = "<group>";
+		};
+		CC14C34B1E37E03A00F400FB /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC14C34C1E37E09100F400FB /* MemberPictureCell.swift */,
+				CC6652561E3AF77500247670 /* CustomUIView.swift */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		CC14C3501E3949DC00F400FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC0C27A31E41C23D0060DF04 /* Constants.swift */,
+				CC14C3511E3949EC00F400FB /* MemberModel.swift */,
+				CC0C27A11E41C1DD0060DF04 /* MyLabel.swift */,
+				CC9163501E4A301600EF5193 /* UIBorderedLabel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC5D27081E431F55008B8973 /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				CC7CA7E71E43417200FC7661 /* CheckboxButton.swift */,
+				CC5D27091E431F66008B8973 /* MyAlamofire.swift */,
+				CC7CA7E91E4350A800FC7661 /* MyAPIS.swift */,
+			);
+			name = Defines;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC14C3191E37D59800F400FB /* Earthistic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC14C3421E37D59800F400FB /* Build configuration list for PBXNativeTarget "Earthistic" */;
+			buildPhases = (
+				A0F9D83EA755ED21682553F0 /* [CP] Check Pods Manifest.lock */,
+				CC14C3161E37D59800F400FB /* Sources */,
+				CC14C3171E37D59800F400FB /* Frameworks */,
+				CC14C3181E37D59800F400FB /* Resources */,
+				A758DE7BD893DFE5DD4A3E56 /* [CP] Embed Pods Frameworks */,
+				73DCA1CFDFC976F25F5A4F6E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Earthistic;
+			productName = Earthistic;
+			productReference = CC14C31A1E37D59800F400FB /* Earthistic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC14C32D1E37D59800F400FB /* EarthisticTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC14C3451E37D59800F400FB /* Build configuration list for PBXNativeTarget "EarthisticTests" */;
+			buildPhases = (
+				CC14C32A1E37D59800F400FB /* Sources */,
+				CC14C32B1E37D59800F400FB /* Frameworks */,
+				CC14C32C1E37D59800F400FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC14C3301E37D59800F400FB /* PBXTargetDependency */,
+			);
+			name = EarthisticTests;
+			productName = EarthisticTests;
+			productReference = CC14C32E1E37D59800F400FB /* EarthisticTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CC14C3381E37D59800F400FB /* EarthisticUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC14C3481E37D59800F400FB /* Build configuration list for PBXNativeTarget "EarthisticUITests" */;
+			buildPhases = (
+				CC14C3351E37D59800F400FB /* Sources */,
+				CC14C3361E37D59800F400FB /* Frameworks */,
+				CC14C3371E37D59800F400FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC14C33B1E37D59800F400FB /* PBXTargetDependency */,
+			);
+			name = EarthisticUITests;
+			productName = EarthisticUITests;
+			productReference = CC14C3391E37D59800F400FB /* EarthisticUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC14C3121E37D59800F400FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Sobura;
+				TargetAttributes = {
+					CC14C3191E37D59800F400FB = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P7VZEYXJWS;
+					};
+					CC14C32D1E37D59800F400FB = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = CC14C3191E37D59800F400FB;
+					};
+					CC14C3381E37D59800F400FB = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = CC14C3191E37D59800F400FB;
+					};
+				};
+			};
+			buildConfigurationList = CC14C3151E37D59800F400FB /* Build configuration list for PBXProject "Earthistic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC14C3111E37D59800F400FB;
+			productRefGroup = CC14C31B1E37D59800F400FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC14C3191E37D59800F400FB /* Earthistic */,
+				CC14C32D1E37D59800F400FB /* EarthisticTests */,
+				CC14C3381E37D59800F400FB /* EarthisticUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC14C3181E37D59800F400FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14C3281E37D59800F400FB /* LaunchScreen.storyboard in Resources */,
+				CC14C3251E37D59800F400FB /* Assets.xcassets in Resources */,
+				CC14C3231E37D59800F400FB /* Main.storyboard in Resources */,
+				CC782E3F1E4920D800C1C1A1 /* FacebookSDKStrings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C32C1E37D59800F400FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C3371E37D59800F400FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73DCA1CFDFC976F25F5A4F6E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0F9D83EA755ED21682553F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A758DE7BD893DFE5DD4A3E56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC14C3161E37D59800F400FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14C3521E3949EC00F400FB /* MemberModel.swift in Sources */,
+				CC14C3201E37D59800F400FB /* ViewController.swift in Sources */,
+				CC9163511E4A301600EF5193 /* UIBorderedLabel.swift in Sources */,
+				CC7CA7E81E43417200FC7661 /* CheckboxButton.swift in Sources */,
+				CC14C34F1E3947CA00F400FB /* MemberInfoController.swift in Sources */,
+				CC0C279E1E41298F0060DF04 /* SaveViewController.swift in Sources */,
+				CC6652571E3AF77500247670 /* CustomUIView.swift in Sources */,
+				CC14C34D1E37E09100F400FB /* MemberPictureCell.swift in Sources */,
+				CC5D270A1E431F66008B8973 /* MyAlamofire.swift in Sources */,
+				CC6652591E3B1D7400247670 /* InvestViewController.swift in Sources */,
+				CC7CA7EA1E4350A800FC7661 /* MyAPIS.swift in Sources */,
+				CC55399F1E3D68960096B533 /* SignUpViewController.swift in Sources */,
+				CC0C27A01E4192220060DF04 /* LinkViewController.swift in Sources */,
+				CC5539A11E3D68AE0096B533 /* ForgetViewController.swift in Sources */,
+				CC6652551E3AB46400247670 /* CauseViewController.swift in Sources */,
+				CC0C27A41E41C23D0060DF04 /* Constants.swift in Sources */,
+				CC0C27A21E41C1DD0060DF04 /* MyLabel.swift in Sources */,
+				CC2A47F21E45F548001549AE /* EndPageController.swift in Sources */,
+				CC14C31E1E37D59800F400FB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C32A1E37D59800F400FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14C3331E37D59800F400FB /* EarthisticTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC14C3351E37D59800F400FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14C33E1E37D59800F400FB /* EarthisticUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC14C3301E37D59800F400FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC14C3191E37D59800F400FB /* Earthistic */;
+			targetProxy = CC14C32F1E37D59800F400FB /* PBXContainerItemProxy */;
+		};
+		CC14C33B1E37D59800F400FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC14C3191E37D59800F400FB /* Earthistic */;
+			targetProxy = CC14C33A1E37D59800F400FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC14C3211E37D59800F400FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC14C3221E37D59800F400FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CC14C3261E37D59800F400FB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC14C3271E37D59800F400FB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC14C3401E37D59800F400FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC14C3411E37D59800F400FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC14C3431E37D59800F400FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 582A6EF137CCB7E1120FAE34 /* Pods-Earthistic.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Earthistic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Earthistic.rock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CC14C3441E37D59800F400FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4882799187495FDB46C04B46 /* Pods-Earthistic.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Earthistic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Earthistic.rock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CC14C3461E37D59800F400FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EarthisticTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.EarthisticTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earthistic.app/Earthistic";
+			};
+			name = Debug;
+		};
+		CC14C3471E37D59800F400FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EarthisticTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.EarthisticTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earthistic.app/Earthistic";
+			};
+			name = Release;
+		};
+		CC14C3491E37D59800F400FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EarthisticUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.EarthisticUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Earthistic;
+			};
+			name = Debug;
+		};
+		CC14C34A1E37D59800F400FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EarthisticUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.EarthisticUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Earthistic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC14C3151E37D59800F400FB /* Build configuration list for PBXProject "Earthistic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC14C3401E37D59800F400FB /* Debug */,
+				CC14C3411E37D59800F400FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC14C3421E37D59800F400FB /* Build configuration list for PBXNativeTarget "Earthistic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC14C3431E37D59800F400FB /* Debug */,
+				CC14C3441E37D59800F400FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC14C3451E37D59800F400FB /* Build configuration list for PBXNativeTarget "EarthisticTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC14C3461E37D59800F400FB /* Debug */,
+				CC14C3471E37D59800F400FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC14C3481E37D59800F400FB /* Build configuration list for PBXNativeTarget "EarthisticUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC14C3491E37D59800F400FB /* Debug */,
+				CC14C34A1E37D59800F400FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC14C3121E37D59800F400FB /* Project object */;
+}

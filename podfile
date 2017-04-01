@@ -1,0 +1,12 @@
+use_frameworks!
+
+platform :ios, ‘9.0’
+
+pod 'M13ProgressSuite', :git => "https://github.com/Marxon13/M13ProgressSuite.git", :tag => "v1.2.7"
+pod 'Dodo', '~> 2.0'
+pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :tag => '3.5.0'
+pod 'MBProgressHUD'
+pod 'Stripe', '~> 8.0.7’
+target ‘Earthistic’ do
+
+end
