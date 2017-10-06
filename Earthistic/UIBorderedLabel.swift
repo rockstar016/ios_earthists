@@ -7,9 +7,9 @@ class UIBorderedLabel: UILabel {
     var bottomInset:    CGFloat = 10
     var leftInset:      CGFloat = 10
     
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         let insets: UIEdgeInsets = UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
         self.setNeedsLayout()
-        return super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+        return super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
 }

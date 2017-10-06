@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var memberPicture : [String] = ["star_wandergypc","star_luckiam","lana_photo","jack_photo","ewa_photo","john_photo","star_dandora_music"]
-    var memberProfilePicture : [String] = ["star_wandergypc_1","star_luckiam_1","lana_photo_1","jack_photo_1","ewa_photo_1","john_photo_1","star_dandora_music_1"]
-    var memberName : [String] = ["The Wanderin GypC","Luckyiam","Lana Shea","Jack Brockway","Ewa","Jhon Dardenne","Dandora Music"]
+    var memberPicture : [String] = ["star_wandergypc","lana_photo","jack_photo","ewa_photo","john_photo","star_dandora_music"]
+    var memberProfilePicture : [String] = ["star_wandergypc_1","lana_photo_1","jack_photo_1","ewa_photo_1","john_photo_1","star_dandora_music_1"]
+    var memberName : [String] = ["The Wanderin GypC","Lana Shea","Jack Brockway","Ewa","Jhon Dardenne","Dandora Music"]
     var sequence : Int = 0
     var curPage:Int!
     var originalOffset:CGPoint!
@@ -28,33 +28,41 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memberPicture.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)as! MemberPictureCell
-        cell.MemberPicture.image = UIImage(named: memberPicture[indexPath.row])
-        cell.NameLabel.text = self.memberName[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)as! MemberPictureCell
         self.sequence = indexPath.row
+        print(memberPicture[sequence])
+        cell.MemberPicture.image = UIImage(named: memberPicture[sequence])
+        cell.NameLabel.text = self.memberName[sequence]
         return cell
     }
     
-    func collectionView( collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        return collectionView.bounds.size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell_width = self.view.frame.width
+        let cell_height = self.view.frame.height;
+        return CGSize(width: cell_width, height: cell_height)
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        curPage = Int((self.collectionView.contentOffset.x / self.collectionView.contentSize.width) * CGFloat(self.memberPicture.count + 1))
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        curPage = Int((self.collectionView.contentOffset.x / self.collectionView.contentSize.width) * CGFloat(self.memberPicture.count))
         originalOffset = self.collectionView.contentOffset
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
+    {
+//        print("Curpage: " + String(curPage))
     }
     
-    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         self.rightScroll = false
         self.leftScroll = false
         
@@ -67,19 +75,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.leftScroll = true
         }
     }
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if(self.originalOffset.x < self.collectionView.contentOffset.x)
         {
             if(curPage < self.memberPicture.count)
             {
-                self.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: curPage + 1, inSection: 0), atScrollPosition:UICollectionViewScrollPosition.Left, animated: false)
+                self.collectionView?.scrollToItem(at: IndexPath(item: curPage + 1, section: 0), at:UICollectionViewScrollPosition.left, animated: false)
             }
         }
         else if(self.originalOffset.x > self.collectionView.contentOffset.x)
         {
             if(curPage > 0)
             {
-                self.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: curPage - 1, inSection: 0), atScrollPosition:UICollectionViewScrollPosition.Right, animated: false)
+                self.collectionView?.scrollToItem(at: IndexPath(item: curPage - 1, section: 0), at:UICollectionViewScrollPosition.right, animated: false)
             }
         }
         else
@@ -88,7 +96,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             {
                 if(!leftScroll)
                 {
-                    self.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition:    UICollectionViewScrollPosition.Left, animated: false)
+                    self.collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at:    UICollectionViewScrollPosition.left, animated: false)
                 }
             }
             else if(curPage == 0)
@@ -100,18 +108,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ToMemberPage")
         {
-            MemberModel.sharedInstance.name = memberName[sequence ]
+            MemberModel.sharedInstance.name = memberName[sequence]
             MemberModel.sharedInstance.profileImage = memberProfilePicture[sequence]
             MemberModel.sharedInstance.Image = memberPicture[sequence]
             MemberModel.sharedInstance.sequence = self.sequence
         }
     }
 
-    @IBAction func onTapHeartBtn(sender: AnyObject) {
-        performSegueWithIdentifier("ToMemberPage", sender: self)
+    @IBAction func onTapHeartBtn(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ToMemberPage", sender: self)
     }
 
 }

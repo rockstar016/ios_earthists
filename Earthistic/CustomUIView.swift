@@ -13,9 +13,9 @@ extension UIView {
     func setExtesionStyle()
     {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).CGColor
+        self.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
         self.layer.cornerRadius = 10
-        self.layer.shadowColor = UIColor(red:165/255.0, green:165/255.0, blue:167/255.0, alpha: 1.0).CGColor
+        self.layer.shadowColor = UIColor(red:165/255.0, green:165/255.0, blue:167/255.0, alpha: 1.0).cgColor
         self.layer.shadowOpacity = 0.7
     }
 }

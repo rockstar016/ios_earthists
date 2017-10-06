@@ -7,9 +7,9 @@
 //
 
 import UIKit
-public class Constants{
+open class Constants{
     
     static func getRateHeight()->CGFloat{
-        return UIScreen.mainScreen().bounds.height/568
+        return UIScreen.main.bounds.height/568
     }
 }

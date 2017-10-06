@@ -3,22 +3,22 @@ import UIKit
 /// Collection of animation effects use for showing and hiding the notification bar.
 public enum DodoAnimations: String {
   /// Animation that fades the bar in/out.
-  case Fade = "Fade"
+  case fade = "Fade"
   
   /// Used for showing notification without animation.
-  case NoAnimation = "No animation"
+  case noAnimation = "No animation"
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  case Rotate = "Rotate"
+  case rotate = "Rotate"
   
   /// Animation that swipes the bar to/from the left with fade effect.
-  case SlideLeft = "Slide left"
+  case slideLeft = "Slide left"
   
   /// Animation that swipes the bar to/from the right with fade effect.
-  case SlideRight = "Slide right"
+  case slideRight = "Slide right"
   
   /// Animation that slides the bar in/out vertically.
-  case SlideVertically = "Slide vertically"
+  case slideVertically = "Slide vertically"
   
   /**
   
@@ -29,22 +29,22 @@ public enum DodoAnimations: String {
   */
   public var show: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsShow.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsShow.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsShow.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsShow.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsShow.slideVertically
     }
   }
@@ -58,22 +58,22 @@ public enum DodoAnimations: String {
   */
   public var hide: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsHide.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsHide.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsHide.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsHide.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsHide.slideVertically
     }
   }
@@ -87,15 +87,15 @@ public enum DodoAnimations: String {
   - parameter completed: A closure to be called after animation completes.
 
   */
-  static func noAnimation(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func doNoAnimation(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
     completed()
   }
   
   /// Helper function for fading the view in and out.
-  static func fade(duration: NSTimeInterval?, showView: Bool, view: UIView,
-    completed: DodoAnimationCompleted) {
+  static func doFade(_ duration: TimeInterval?, showView: Bool, view: UIView,
+    completed: @escaping DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.5
     let startAlpha: CGFloat = showView ? 0 : 1
@@ -103,7 +103,7 @@ public enum DodoAnimations: String {
 
     view.alpha = startAlpha
     
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       animations: {
         view.alpha = endAlpha
       },
@@ -114,8 +114,8 @@ public enum DodoAnimations: String {
   }
   
   /// Helper function for sliding the view vertically
-  static func slideVertically(duration: NSTimeInterval?, showView: Bool, view: UIView,
-    locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func doSlideVertically(_ duration: TimeInterval?, showView: Bool, view: UIView,
+    locationTop: Bool, completed: @escaping DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 0.5
     view.layoutIfNeeded()
@@ -125,17 +125,17 @@ public enum DodoAnimations: String {
     if locationTop {
       distance = view.frame.height + view.frame.origin.y
     } else {
-      distance = UIScreen.mainScreen().bounds.height - view.frame.origin.y
+      distance = UIScreen.main.bounds.height - view.frame.origin.y
     }
             
-    let transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
+    let transform = CGAffineTransform(translationX: 0, y: locationTop ? -distance : distance)
       
-    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity
+    let end: CGAffineTransform = showView ? CGAffineTransform.identity : transform
     
     view.transform = start
     
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 1,
@@ -152,11 +152,11 @@ public enum DodoAnimations: String {
   static weak var timer: MoaTimer?
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: @escaping DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
-    let start: Double = showView ? Double(M_PI / 2) : 0
-    let end: Double = showView ? 0 : Double(M_PI / 2)
+    let start: Double = showView ? Double(Double.pi / 2) : 0
+    let end: Double = showView ? 0 : Double(Double.pi / 2)
     let damping = showView ? 0.85 : 3
     
     let myCALayer = view.layer
@@ -185,15 +185,15 @@ public enum DodoAnimations: String {
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
-  static func slide(duration: NSTimeInterval?, right: Bool, showView: Bool,
-    view: UIView, completed: DodoAnimationCompleted) {
+  static func doSlide(_ duration: TimeInterval?, right: Bool, showView: Bool,
+    view: UIView, completed: @escaping DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4
-    let distance = UIScreen.mainScreen().bounds.width
-    let transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
+    let distance = UIScreen.main.bounds.width
+    let transform = CGAffineTransform(translationX: right ? distance : -distance, y: 0)
     
-    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity
+    let end: CGAffineTransform = showView ? CGAffineTransform.identity : transform
     
     let alphaStart: CGFloat = showView ? 0.2 : 1
     let alphaEnd: CGFloat = showView ? 1 : 0.2
@@ -201,9 +201,9 @@ public enum DodoAnimations: String {
     view.transform = start
     view.alpha = alphaStart
       
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       delay: 0,
-      options: UIViewAnimationOptions.CurveEaseOut,
+      options: UIViewAnimationOptions.curveEaseOut,
       animations: {
         view.transform = end
         view.alpha = alphaEnd

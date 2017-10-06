@@ -19,9 +19,9 @@ class CauseViewController: UIViewController {
     @IBOutlet weak var causeProfilePicture: UIImageView!
     var index :Int = 0
     var selectedbutton : Int = 0
-    var heartImage : [[String]] = [["chooselovecause","waterislifecause"],["raceequitycause"],["genderequitycause"],["sustainablecause"],["healthylivingcause"],["incomeequalitycause"],["wildlifecause"]]
-    var causeName : [[String]] = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["RACE EQUITY CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
-    var causeKind : [[String]] = [["Choose Love","Water is Life"],["Race Equity"],["Gender Equity"],["Sustainable Liviing"],["Healthy Living"],["Income Equity"],["Wildlife Equity"]]
+    var heartImage : [[String]] = [["chooselovecause","waterislifecause"],["genderequitycause"],["sustainablecause"],["healthylivingcause"],["incomeequalitycause"],["wildlifecause"]]
+    var causeName : [[String]] = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
+    var causeKind : [[String]] = [["Choose Love","Water is Life"],["Gender Equity"],["Sustainable Liviing"],["Healthy Living"],["Income Equity"],["Wildlife Equity"]]
     var causeContentText : [[String]] = [["All our causes revolve around this cause  for we believe that if love is the motive for all your choices then everything else" +
         " will fall into place. Our solutions to humanity’s many problems all follow a “center-out” approach, meaning they are tailored to meet the specific needs of those they are trying to help. When we focus on our children first, we naturally" +
         " look to love to guide us. Also known as the Children First cause, this cause benefits Father Bosco’s work with orphans in Africa.",
@@ -32,12 +32,12 @@ class CauseViewController: UIViewController {
             "what it is today. We share in all of our many blessings and want to see you thrive as well. We commit to collaborating with Indigenous " +
             "people for a progressive today and a peaceful tomorrow.  We rise up in love to help protect that, which gives us life, our gracious Mother " +
         "Earth and water, the life source of our great Mother.  Together, we can finally do what is right. "],
-        ["Our Race Equity cause focuses on the notion of being fair, the idea of justice rather than everyone being seen as equals.  " +
-                                            "Different cultures have different ways to contribute to humanity and society and our differences are a cause for celebration. " +
-                                            "We believe proper race equity starts with acknowledgement and understanding of history and current events so we can properly " +
-                                            "steer the courses of our future towards collaboration, equality and peace. Many racial inequalities today are still the extended " +
-                                            "products of colonialism. When we acknowledge and fully understand this we can start to correct it. For this reason, this cause " +
-                                            "supports the amazing and heroic efforts of Falling Whistles and their push for peace."],
+//        ["Our Race Equity cause focuses on the notion of being fair, the idea of justice rather than everyone being seen as equals.  " +
+//                                            "Different cultures have different ways to contribute to humanity and society and our differences are a cause for celebration. " +
+//                                            "We believe proper race equity starts with acknowledgement and understanding of history and current events so we can properly " +
+//                                            "steer the courses of our future towards collaboration, equality and peace. Many racial inequalities today are still the extended " +
+//                                            "products of colonialism. When we acknowledge and fully understand this we can start to correct it. For this reason, this cause " +
+//                                            "supports the amazing and heroic efforts of Falling Whistles and their push for peace."],
         ["Our gender equality cause promotes a balanced approach to life by creating equity between the sexes. We believe " +
             "that we will never reach humanity’s full potential until we fully appreciate women and incorporate them into every aspect of society. " +
             "This stARTs with each of us. This cause vigorously supports the brilliant Jackson Katz and his work with " +
@@ -85,10 +85,10 @@ class CauseViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         let height = causeTextLabel.bounds.height
-        scrollView.contentSize = CGSizeMake(self.causeContentView.frame.size.width, height + 10)
+        scrollView.contentSize = CGSize(width: self.causeContentView.frame.size.width, height: height + 10)
     }
-    @IBAction func onTapBackBtn(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func onTapBackBtn(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

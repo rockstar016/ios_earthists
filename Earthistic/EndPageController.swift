@@ -21,7 +21,7 @@ class EndPageController: UIViewController {
         contentLabel.attributedText = attrString
         contentLabel.sizeToFit()
     }
-    @IBAction func onTapOKButton(sender: AnyObject) {
+    @IBAction func onTapOKButton(_ sender: AnyObject) {
 
 
         let myControllers = self.navigationController?.viewControllers

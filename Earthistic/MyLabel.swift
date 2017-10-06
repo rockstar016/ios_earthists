@@ -5,7 +5,7 @@
 
 import UIKit
 extension UILabel {
-    func AdjustFontSize(rate:CGFloat) {
+    func AdjustFontSize(_ rate:CGFloat) {
         
         //self.titleLabel!.font = 120;
         self.font = UIFont(name: (self.font?.fontName)!, size: 12 * Constants.getRateHeight())
@@ -17,12 +17,12 @@ class MyLabel:UILabel{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.AdjustFontSize(Constants.getRateHeight())
-        print(String(Constants.getRateHeight()))
+        print(String(describing: Constants.getRateHeight()))
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.AdjustFontSize(Constants.getRateHeight())
-        print(String(Constants.getRateHeight()))
+        print(String(describing: Constants.getRateHeight()))
     }
     
 }

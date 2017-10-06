@@ -10,6 +10,19 @@ import UIKit
 import FBSDKShareKit
 import FBSDKLoginKit
 import FBSDKCoreKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 var fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
 class InvestViewController: UIViewController, UITextFieldDelegate {
    
@@ -23,20 +36,20 @@ class InvestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var causeLabel: UILabel!
     var bTextViewMove: Bool = false
     var nTextViewMoveDistance: Int = 0
-    var keyboardSize: CGSize = CGSizeMake(0, 0)
+    var keyboardSize: CGSize = CGSize(width: 0, height: 0)
     var causeKind : [[String]] = [["Choose Love","Water is Life"],["Race Equity"],["Gender Equity"],["Sustainable Liviing"],["Healthy Living"],["Income Equity"],["Wildlife Equity"]]
     override func viewDidLoad() {
         super.viewDidLoad()
         facebookBtn.layer.cornerRadius = 7
         loginBtn.layer.cornerRadius = 7
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 388)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 388)
         memberNameLabel.text = MemberModel.sharedInstance.name
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 10
         let attrString = NSMutableAttributedString(string: "You've chosen to invest in " + MemberModel.sharedInstance.name + ".\nHere is where your money will be going")
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         InvestTxtLabel.attributedText = attrString
-        InvestTxtLabel.textAlignment = .Center
+        InvestTxtLabel.textAlignment = .center
         causeDetect()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ForgetViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -46,16 +59,16 @@ class InvestViewController: UIViewController, UITextFieldDelegate {
     {
         view.endEditing(true)
     }
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         keyboardSize.height = 250
         
-        var textFieldOrigin = textField.superview?.convertPoint(textField.frame.origin, toView: nil)
+        var textFieldOrigin = textField.superview?.convert(textField.frame.origin, to: nil)
         textFieldOrigin?.y += textField.frame.size.height
         let textFieldHeight = textField.frame.size.height
         var visibleRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height + 40
         
-        if (!CGRectContainsPoint(visibleRect, textFieldOrigin!)) {
+        if (!visibleRect.contains(textFieldOrigin!)) {
             textFieldOrigin!.y -= textField.frame.size.height
             
             let dist = Int(textFieldOrigin!.y - visibleRect.size.height + textFieldHeight)
@@ -64,24 +77,24 @@ class InvestViewController: UIViewController, UITextFieldDelegate {
             nTextViewMoveDistance = dist
         }
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if (bTextViewMove) {
             animateTextField(textField, up: false, distance: nTextViewMoveDistance)
             bTextViewMove = false
         }
     }
-    func animateTextField(textField: UITextField, up: Bool, distance: Int) {
+    func animateTextField(_ textField: UITextField, up: Bool, distance: Int) {
         let movementDuration = 0.3
         let movement = (up ? -distance:distance)
         
         UIView.beginAnimations("anim", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration)
-        self.view.frame = CGRectOffset(self.view.frame, 0, CGFloat(movement))
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: CGFloat(movement))
         UIView.commitAnimations()
     }
 
@@ -93,103 +106,100 @@ class InvestViewController: UIViewController, UITextFieldDelegate {
             causeLabel.text = str
         }
     }
-    @IBAction func onTapBackBtn(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func onTapBackBtn(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func onTapLoginBtn(sender: AnyObject) {
+    @IBAction func onTapLoginBtn(_ sender: AnyObject) {
         if (emailTextField.text?.characters.count < 1 || passwordTextField.text?.characters.count < 1) {
-            let alertController = UIAlertController(title: "Caution", message: "Please complete all required fields.", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+            let alertController = UIAlertController(title: "Caution", message: "Please complete all required fields.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             }
             alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
             return
         }
         let params = [
             "email" : emailTextField.text!,
             "password" : passwordTextField.text!
         ]
-        MyAlamofire.POST(LOGIN_API, parameters: params,showLoading: true,showSuccess: false,showError: true,search:false) { (result, responseObject)
+        MyAlamofire.POST(LOGIN_API, parameters: params as [String : AnyObject],showLoading: true,showSuccess: false,showError: true) { (result, responseObject)
             in
             if(result){
-                let result = responseObject.objectForKey("result") as! Int
-                if result == 0{
-                    let alertController = UIAlertController(title: "Caution", message: "Login Faild.", preferredStyle: UIAlertControllerStyle.Alert)
-                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                let result = responseObject.object(forKey: "result") as! Bool
+                if result == false{
+                    let alertController = UIAlertController(title: "Caution", message: "Login Faild.", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                     }
                     alertController.addAction(okAction)
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)
                     return
                 }
                 else{
-                    let token = responseObject.objectForKey("data") as! String
+                    let token = responseObject.object(forKey: "data") as! String
                     MemberModel.sharedInstance.user_Token = token
-                    self.performSegueWithIdentifier("ToLinkPage", sender: self)
+                    self.performSegue(withIdentifier: "ToLinkPage", sender: self)
                 }
             }
         }
 
     }
-    @IBAction func onTapForgetBtn(sender: AnyObject) {
-        performSegueWithIdentifier("ToForgetPage", sender: self)
+    @IBAction func onTapForgetBtn(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ToForgetPage", sender: self)
     }
 
-    @IBAction func onTapSignUpBtn(sender: AnyObject) {
-        performSegueWithIdentifier("ToSignUpPage", sender: self)
+    @IBAction func onTapSignUpBtn(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ToSignUpPage", sender: self)
     }
-    @IBAction func onTapFacebookBtn(sender: AnyObject) {
+    @IBAction func onTapFacebookBtn(_ sender: AnyObject) {
         fbLoginManager = FBSDKLoginManager()
         
-        fbLoginManager.logInWithReadPermissions(["email", "user_friends","public_profile"], fromViewController: self){ (result, error) -> Void in
+        fbLoginManager.logIn(withReadPermissions: ["email", "user_friends","public_profile"], from: self){ (result, error) -> Void in
             if (error != nil){
                 
                 //self.facebookBtn.setOn(false, animated: true)
-                print("dddddddddddddd")
             }
-            else if(result.isCancelled)
+            else if(result?.isCancelled)!
             {
-                print("drdrdrdrdrdr")
-
+                
             }
             else
             {
-                print("ccccccccccccccc")
                 self.getFBUserData()
-
-
             }
         }
     }
     func getFBUserData()
     {
-        if((FBSDKAccessToken.currentAccessToken()) != nil){
+        if((FBSDKAccessToken.current()) != nil){
             MyAlamofire.showIndicator()
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 MyAlamofire.hideIndicator()
                 if (error == nil){
                     //everything works print the user data
                     //
+                    
                     if result != nil {
-                        let email = result.objectForKey("email") as! String
+                        let response = result as AnyObject
+                        let email = response.object(forKey: "email") as! String
                         let params = [
                             "email" : email
                         ]
-                        MyAlamofire.POST(FACEBOOK_API, parameters: params,showLoading: true,showSuccess: false,showError: true,search:false) { (result, responseObject)
+                        MyAlamofire.POST(FACEBOOK_API, parameters: params as [String : AnyObject],showLoading: true,showSuccess: false,showError: true) { (result, responseObject)
                             in
                             if(result){
-                                print(responseObject)
-                                let res = responseObject.objectForKey("result") as! Int
-                                if res == 1 {
-                                    let token = responseObject.objectForKey("data") as! String
+
+                                let res = responseObject.object(forKey: "result") as? Bool
+                                if res == true {
+                                    let token = responseObject.object(forKey: "data") as! String
                                     MemberModel.sharedInstance.user_Token = token
-                                    self.performSegueWithIdentifier("ToLinkPage", sender: self)
+                                    self.performSegue(withIdentifier: "ToLinkPage", sender: self)
                                 }else
                                 {
-                                    let alertController = UIAlertController(title: "Caution", message: "Login Faild.", preferredStyle: UIAlertControllerStyle.Alert)
-                                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                                    let alertController = UIAlertController(title: "Caution", message: "Login Faild.", preferredStyle: UIAlertControllerStyle.alert)
+                                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                                     }
                                     alertController.addAction(okAction)
-                                    self.presentViewController(alertController, animated: true, completion: nil)
+                                    self.present(alertController, animated: true, completion: nil)
                                     return
                                 }
                             }
@@ -198,7 +208,7 @@ class InvestViewController: UIViewController, UITextFieldDelegate {
                 }
                 else
                 {
-                    print(error.localizedDescription)
+
                 }
             })
         }

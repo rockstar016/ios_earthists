@@ -30,10 +30,10 @@ class LinkViewController: UIViewController {
         botomLabel.sizeToFit()
 
     }
-    @IBAction func onBackBtn(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func onBackBtn(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func onTapLinkBtn(sender: AnyObject) {
-        self.performSegueWithIdentifier("ToSavePage", sender: self)
+    @IBAction func onTapLinkBtn(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "ToSavePage", sender: self)
     }
 }

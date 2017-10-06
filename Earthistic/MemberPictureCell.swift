@@ -15,5 +15,6 @@ class MemberPictureCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.NameLabel.text = nil
+        self.MemberPicture.image = UIImage()
     }
 }
