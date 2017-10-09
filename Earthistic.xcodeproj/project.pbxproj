@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02597B3EB76EBE7F174D1A39 /* Pods_Earthistic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */; };
+		11D012E51F88E3DD00DDCE87 /* ScrollViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D012E41F88E3DD00DDCE87 /* ScrollViewExtentions.swift */; };
 		CC0C279E1E41298F0060DF04 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C279D1E41298F0060DF04 /* SaveViewController.swift */; };
 		CC0C27A01E4192220060DF04 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C279F1E4192220060DF04 /* LinkViewController.swift */; };
 		CC0C27A21E41C1DD0060DF04 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C27A11E41C1DD0060DF04 /* MyLabel.swift */; };
@@ -30,10 +31,6 @@
 		CC6652571E3AF77500247670 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6652561E3AF77500247670 /* CustomUIView.swift */; };
 		CC6652591E3B1D7400247670 /* InvestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6652581E3B1D7400247670 /* InvestViewController.swift */; };
 		CC782E371E4913F200C1C1A1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E361E4913F200C1C1A1 /* Bolts.framework */; };
-		CC782E3A1E49140500C1C1A1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */; };
-		CC782E3B1E49140500C1C1A1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */; };
-		CC782E3D1E49141D00C1C1A1 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */; };
-		CC782E3F1E4920D800C1C1A1 /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */; };
 		CC7CA7E81E43417200FC7661 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7CA7E71E43417200FC7661 /* CheckboxButton.swift */; };
 		CC7CA7EA1E4350A800FC7661 /* MyAPIS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7CA7E91E4350A800FC7661 /* MyAPIS.swift */; };
 		CC9163511E4A301600EF5193 /* UIBorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9163501E4A301600EF5193 /* UIBorderedLabel.swift */; };
@@ -57,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11D012E41F88E3DD00DDCE87 /* ScrollViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtentions.swift; sourceTree = "<group>"; };
 		40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Earthistic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4882799187495FDB46C04B46 /* Pods-Earthistic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earthistic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic.release.xcconfig"; sourceTree = "<group>"; };
 		582A6EF137CCB7E1120FAE34 /* Pods-Earthistic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earthistic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,10 +87,6 @@
 		CC6652561E3AF77500247670 /* CustomUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		CC6652581E3B1D7400247670 /* InvestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestViewController.swift; sourceTree = "<group>"; };
 		CC782E361E4913F200C1C1A1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
 		CC7CA7E71E43417200FC7661 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		CC7CA7E91E4350A800FC7661 /* MyAPIS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIS.swift; sourceTree = "<group>"; };
 		CC9163501E4A301600EF5193 /* UIBorderedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBorderedLabel.swift; sourceTree = "<group>"; };
@@ -104,9 +98,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				02597B3EB76EBE7F174D1A39 /* Pods_Earthistic.framework in Frameworks */,
-				CC782E3A1E49140500C1C1A1 /* FBSDKCoreKit.framework in Frameworks */,
-				CC782E3D1E49141D00C1C1A1 /* FBSDKShareKit.framework in Frameworks */,
-				CC782E3B1E49140500C1C1A1 /* FBSDKLoginKit.framework in Frameworks */,
 				CC782E371E4913F200C1C1A1 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,11 +122,7 @@
 		5FC2497B884E92B05B09E438 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC782E3E1E4920D800C1C1A1 /* FacebookSDKStrings.bundle */,
-				CC782E3C1E49141D00C1C1A1 /* FBSDKShareKit.framework */,
 				CC782E361E4913F200C1C1A1 /* Bolts.framework */,
-				CC782E381E49140500C1C1A1 /* FBSDKCoreKit.framework */,
-				CC782E391E49140500C1C1A1 /* FBSDKLoginKit.framework */,
 				40C13E7AB8F8213EB598164A /* Pods_Earthistic.framework */,
 			);
 			name = Frameworks;
@@ -193,6 +180,7 @@
 				CC14C3241E37D59800F400FB /* Assets.xcassets */,
 				CC14C3261E37D59800F400FB /* LaunchScreen.storyboard */,
 				CC14C3291E37D59800F400FB /* Info.plist */,
+				11D012E41F88E3DD00DDCE87 /* ScrollViewExtentions.swift */,
 			);
 			path = Earthistic;
 			sourceTree = "<group>";
@@ -316,7 +304,7 @@
 				TargetAttributes = {
 					CC14C3191E37D59800F400FB = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 2396E68YS8;
+						DevelopmentTeam = 7G36KX27ZY;
 						LastSwiftMigration = 0820;
 					};
 					CC14C32D1E37D59800F400FB = {
@@ -359,7 +347,6 @@
 				CC14C3281E37D59800F400FB /* LaunchScreen.storyboard in Resources */,
 				CC14C3251E37D59800F400FB /* Assets.xcassets in Resources */,
 				CC14C3231E37D59800F400FB /* Main.storyboard in Resources */,
-				CC782E3F1E4920D800C1C1A1 /* FacebookSDKStrings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,13 +388,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Earthistic-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A758DE7BD893DFE5DD4A3E56 /* [CP] Embed Pods Frameworks */ = {
@@ -416,9 +406,38 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Earthistic/Pods-Earthistic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Dodo/Dodo.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/M13ProgressSuite/M13ProgressSuite.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dodo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13ProgressSuite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -448,6 +467,7 @@
 				CC5539A11E3D68AE0096B533 /* ForgetViewController.swift in Sources */,
 				CC6652551E3AB46400247670 /* CauseViewController.swift in Sources */,
 				CC0C27A41E41C23D0060DF04 /* Constants.swift in Sources */,
+				11D012E51F88E3DD00DDCE87 /* ScrollViewExtentions.swift in Sources */,
 				CC0C27A21E41C1DD0060DF04 /* MyLabel.swift in Sources */,
 				CC2A47F21E45F548001549AE /* EndPageController.swift in Sources */,
 				CC14C31E1E37D59800F400FB /* AppDelegate.swift in Sources */,
@@ -606,7 +626,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2396E68YS8;
+				DEVELOPMENT_TEAM = 7G36KX27ZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -629,7 +649,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2396E68YS8;
+				DEVELOPMENT_TEAM = 7G36KX27ZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

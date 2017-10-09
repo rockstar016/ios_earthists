@@ -19,10 +19,10 @@ class CauseViewController: UIViewController {
     @IBOutlet weak var causeProfilePicture: UIImageView!
     var index :Int = 0
     var selectedbutton : Int = 0
-    var heartImage : [[String]] = [["chooselovecause","waterislifecause"],["genderequitycause"],["sustainablecause"],["healthylivingcause"],["incomeequalitycause"],["wildlifecause"]]
-    var causeName : [[String]] = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
-    var causeKind : [[String]] = [["Choose Love","Water is Life"],["Gender Equity"],["Sustainable Liviing"],["Healthy Living"],["Income Equity"],["Wildlife Equity"]]
-    var causeContentText : [[String]] = [["All our causes revolve around this cause  for we believe that if love is the motive for all your choices then everything else" +
+    var heartImage = [["chooselovecause","waterislifecause"],["genderequitycause"],["sustainablecause"],["healthylivingcause"],["incomeequalitycause"],["wildlifecause"]]
+    var causeName = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
+    var causeKind = [["Choose Love","Water is Life"],["Gender Equity"],["Sustainable Liviing"],["Healthy Living"],["Income Equity"],["Wildlife Equity"]]
+    var causeContentText = [["All our causes revolve around this cause  for we believe that if love is the motive for all your choices then everything else" +
         " will fall into place. Our solutions to humanity’s many problems all follow a “center-out” approach, meaning they are tailored to meet the specific needs of those they are trying to help. When we focus on our children first, we naturally" +
         " look to love to guide us. Also known as the Children First cause, this cause benefits Father Bosco’s work with orphans in Africa.",
         // water
@@ -80,13 +80,14 @@ class CauseViewController: UIViewController {
         let attrString = NSMutableAttributedString(string: causeContentText[index][selectedbutton])
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         causeTextLabel.attributedText = attrString
-        causeTextLabel.sizeToFit()
+        
     }
     
-    override func viewDidLayoutSubviews() {
-        let height = causeTextLabel.bounds.height
-        scrollView.contentSize = CGSize(width: self.causeContentView.frame.size.width, height: height + 10)
+    override func viewDidAppear(_ animated: Bool) {
+        causeTextLabel.sizeToFit()
+        scrollView.resizeScrollViewContentSize()
     }
+    
     @IBAction func onTapBackBtn(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }

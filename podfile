@@ -6,8 +6,11 @@ pod 'M13ProgressSuite', :git => "https://github.com/Marxon13/M13ProgressSuite.gi
 pod 'Dodo', '~> 8.0'
 pod 'Alamofire', '~> 4.4'
 pod 'MBProgressHUD', '~> 1.0.0'
-pod 'IQKeyboardManagerSwift'
+pod 'IQKeyboardManagerSwift', '4.0.10'
 pod 'Stripe'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
 pod ‘NVActivityIndicatorView’
 target ‘Earthistic’ do
 

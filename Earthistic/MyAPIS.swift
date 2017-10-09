@@ -1,11 +1,3 @@
-//
-//  MyAPIS.swift
-//  Earthistic
-//
-//  Created by Sobura on 2/2/17.
-//  Copyright © 2017 Sobura. All rights reserved.
-//
-
 import Foundation
 
 let BASED_URL = "https://app.earthists.org/clientapi/public/api"

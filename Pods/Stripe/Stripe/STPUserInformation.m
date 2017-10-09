@@ -7,13 +7,16 @@
 //
 
 #import "STPUserInformation.h"
-#import "STPCardValidator.h"
 
+#import "STPCardValidator.h"
 
 @implementation STPUserInformation
 
-- (void)setPhone:(NSString *)phone {
-    _phone = [STPCardValidator sanitizedNumericStringForString:phone];
+- (id)copyWithZone:(__unused NSZone *)zone {
+    STPUserInformation *copy = [self.class new];
+    copy.billingAddress = self.billingAddress;
+    copy.shippingAddress = self.shippingAddress;
+    return copy;
 }
 
 @end

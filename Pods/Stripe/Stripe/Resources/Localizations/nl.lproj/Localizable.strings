@@ -1,174 +1,141 @@
-﻿/* Placeholder for Apartment/Address line 2 on address form */
-"#23" = "#23";
-
 /* {card brand} ending in {last4} */
-"%@ Ending In %@" = "%1$@ Ending In %2$@";
-
-/* Placeholder for Phone field on address form */
-"(555) 123-1234" = "(555) 123-1234";
-
-/* Placeholder for Address field on address form */
-"123 Address St" = "123 Address St";
-
-/* Placeholder for Zip Code field on address form */
-"12345" = "12345";
-
-/* Placeholder for Postal Code field on address form */
-"ABC-1234" = "ABC-1234";
+"%@ Ending In %@" = "%1$@ — %2$@";
 
 /* Title for Add a Card view */
-"Add a Card" = "Add a Card";
+"Add a Card" = "Een kaart toevoegen";
 
-/* No comment provided by engineer. */
-"Add New Card…" = "Add New Card…";
+/* Button to add a new credit card. */
+"Add New Card…" = "Nieuwe kaart toevoegen…";
 
 /* Caption for Address field on address form */
-"Address" = "Address";
+"Address" = "Adres";
 
 /* Text for Apple Pay payment method */
 "Apple Pay" = "Apple Pay";
 
 /* Caption for Apartment/Address line 2 field on address form */
-"Apt." = "Apt.";
+"Apt." = "Adresregel 2";
 
-/* Text for back button */
-"Back" = "Back";
+/* Title for billing address entry section */
+"Billing Address" = "Factuuradres";
 
-/* Placeholder for State field on address form (US region only) */
-"CA" = "CA";
+/* Title for credit card number entry field */
+"Card" = "Kaart";
 
 /* accessibility label for text field */
-"card number" = "card number";
+"card number" = "kaartnummer";
 
 /* Caption for City field on address form */
-"City" = "City";
+"City" = "Plaats";
+
+/* Title for contact info form */
+"Contact" = "Contact";
 
 /* Caption for Country field on address form */
-"Country" = "Country";
+"Country" = "Land";
 
-/* Caption for County field on address form (non-US regions only) */
-"County" = "County";
+/* Caption for County field on address form (only countries that use county, like United Kingdom) */
+"County" = "Graafschap";
 
-/* No comment provided by engineer. */
-"Didn't receive the code?" = "Didn't receive the code?";
+/* Title for delivery info form */
+"Delivery" = "Levering";
+
+/* Title for delivery address entry section */
+"Delivery Address" = "Afleveradres";
 
 /* Caption for Email field on address form */
-"Email" = "Email";
-
-/* No comment provided by engineer. */
-"Enter card details manually" = "Enter card details manually";
-
-/* No comment provided by engineer. */
-"Enter the verification code to use the payment info you stored with Stripe." = "Enter the verification code to use the payment info you stored with Stripe.";
+"Email" = "E-mailadres";
 
 /* accessibility label for text field */
-"expiration date" = "expiration date";
+"expiration date" = "vervaldatum";
 
-/* No comment provided by engineer. */
-"Fill in your card details manually" = "Fill in your card details manually";
+/* Label for free shipping method */
+"Free" = "Gratis";
 
-/* No comment provided by engineer. */
-"Invalid Code" = "Invalid Code";
+/* Shipping form error message */
+"Invalid Shipping Address" = "Ongeldig verzendadres";
 
-/* Placeholder for Name field on address form */
-"John Appleseed" = "John Appleseed";
-
-/* No comment provided by engineer. */
-"Loading…" = "Loading…";
-
-/* The text in the full Remember Me TOS/privacy footer to turn into a link to the more info URL. NOTE: this must _EXACTLY_ match a substring in the full remember me footer text */
-"More Info" = "More Info";
+/* Title for screen when data is still loading from the network. */
+"Loading…" = "Laden…";
 
 /* Caption for Name field on address form */
-"Name" = "Name";
+"Name" = "Naam";
 
-/* No comment provided by engineer. */
-"Next" = "Next";
+/* Button to move to the next text entry field */
+"Next" = "Volgende";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
 
-/* No comment provided by engineer. */
-"Paste copied code?" = "Paste copied code?";
-
 /* Title for Payment Method screen */
-"Payment Method" = "Payment Method";
+"Payment Method" = "Betalingsmethode";
 
 /* Caption for Phone field on address form */
-"Phone" = "Phone";
+"Phone" = "Telefoon";
 
-/* Caption for Postal Code field on address form (non-US regions only) */
-"Postal Code" = "Postal Code";
+/* Short string for postal code (text used in non-US countries). Please keep to 8 characters or less if possible. */
+"Postal" = "Postcode";
 
-/* The text in the full Remember Me TOS/privacy footer to turn into a link to the privacy policy URL. NOTE: this must _EXACTLY_ match a substring in the full remember me footer text */
-"Privacy Policy" = "Privacy Policy";
+/* Caption for Postal Code field on address form (only shown in countries other than the United States) */
+"Postal Code" = "Postcode";
 
-/* Placeholder for City field on address form */
-"San Francisco" = "San Francisco";
+/* Caption for Province field on address form (only countries that use province, like Canada) */
+"Province" = "Provincie";
 
-/* Label for the switch to enable Remember Me */
-"Save for use in other apps" = "Save for use in other apps";
+/* Text for button to scan a credit card */
+"Scan Card" = "Kaart scannen";
 
-/* No comment provided by engineer. */
-"Something went wrong with remember me: " = "Something went wrong with remember me: ";
+/* Title for shipping info form */
+"Shipping" = "Verzending";
 
-/* Caption for State field on address form (US region only) */
-"State" = "State";
+/* Title for shipping address entry section */
+"Shipping Address" = "Verzendadres";
 
-/* Footer shown when user enables Remember Me that show additional info. If you change/localize this, you _MUST_ change the Privacy Policy, Terms, and More Info strings to match. */
-"Stripe may store my payment info and phone number for use in this app and other apps, and use my number for verification, subject to Stripe's Privacy Policy and Terms. More Info" = "Stripe may store my payment info and phone number for use in this app and other apps, and use my number for verification, subject to Stripe's Privacy Policy and Terms. More Info";
+/* Label for shipping method form */
+"Shipping Method" = "Verzendmethode";
 
-/* The text in the full Remember Me TOS/privacy footer to turn into a link to the terns of service URL. NOTE: this must _EXACTLY_ match a substring in the full remember me footer text */
-"Terms" = "Terms";
+/* Caption for State field on address form (only countries that use state , like United States) */
+"State" = "Staat";
 
-/* No comment provided by engineer. */
-"The operation was cancelled" = "The operation was cancelled";
+/* Caption for generalized state/province/region field on address form (not tied to a specific country's format) */
+"State / Province / Region" = "Staat/provincie/regio";
 
 /* Error when there is a problem processing the credit card */
-"There was an error processing your card -- try again in a few seconds" = "There was an error processing your card -- try again in a few seconds";
-
-/* No comment provided by engineer. */
-"There was an error submitting your autofilled card details." = "There was an error submitting your autofilled card details.";
+"There was an error processing your card -- try again in a few seconds" = "Er is een fout met de verwerking van uw kaart - Probeer het over enkele seconden opnieuw";
 
 /* Unexpected error, such as a 500 from Stripe or a JSON parse error */
-"There was an unexpected error -- try again in a few seconds" = "There was an unexpected error -- try again in a few seconds";
+"There was an unexpected error -- try again in a few seconds" = "Er is een onverwachte fout opgetreden -- Probeer het over enkele seconden opnieuw";
 
-/* No comment provided by engineer. */
-"Too many incorrect attempts" = "Too many incorrect attempts";
+/* Button to fill shipping address from billing address. */
+"Use Billing" = "Gebruik factureringsadres";
 
-/* No comment provided by engineer. */
-"Verification Code" = "Verification Code";
+/* Button to fill billing address from delivery address. */
+"Use Delivery" = "Gebruik bezorgadres";
 
-/* No comment provided by engineer. */
-"We just sent a text message to:" = "We just sent a text message to:";
-
-/* Placeholder text for non-Amex CVC field (3 digits) */
-"XXX" = "XXX";
-
-/* Placeholder text for Amex CVC field (4 digits) */
-"XXXX" = "XXXX";
-
-/* Placeholder for Email field on address form */
-"you@example.com" = "you@example.com";
+/* Button to fill billing address from shipping address. */
+"Use Shipping" = "Gebruik verzendadres";
 
 /* Error when the card has already expired */
-"Your card has expired" = "Your card has expired";
+"Your card has expired" = "Uw kaart is vervallen";
 
 /* Error when the card was declined by the credit card networks */
-"Your card was declined" = "Your card was declined";
+"Your card was declined" = "Uw kaart is geweigerd";
 
 /* Error when the card's expiration month is not valid */
-"Your card's expiration month is invalid" = "Your card's expiration month is invalid";
+"Your card's expiration month is invalid" = "De vervalmaand van uw kaart is ongeldig";
 
 /* Error when the card's expiration year is not valid */
-"Your card's expiration year is invalid" = "Your card's expiration year is invalid";
+"Your card's expiration year is invalid" = "Het vervaljaar van uw kaart is ongeldig";
 
 /* Error when the card number is not valid */
-"Your card's number is invalid" = "Your card's number is invalid";
+"Your card's number is invalid" = "Uw kaartnummer is ongeldig";
 
 /* Error when the card's CVC is not valid */
-"Your card's security code is invalid" = "Your card's security code is invalid";
+"Your card's security code is invalid" = "De beveiligingscode van uw kaart is ongeldig";
 
-/* Caption for Zip Code field on address form (US region only) */
-"ZIP Code" = "ZIP Code";
+/* Short string for zip code (United States only) Please keep to 5 characters or less if possible. */
+"ZIP" = "ZIP";
+
+/* Caption for Zip Code field on address form (only shown when country is United States only) */
+"ZIP Code" = "Postcode";
 

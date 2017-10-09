@@ -8,12 +8,12 @@
 
 class MemberModel
 {
-    var profileImage : String = ""
-    var name : String = ""
-    var Image: String = ""
-    var sequence : Int = 0
-    var user_Token : String = ""
-    var user_Email : String = ""
+    var profileImage = ""
+    var name = ""
+    var Image = ""
+    var sequence = 0
+    var user_Token = ""
+    var user_Email = ""
     static let sharedInstance = MemberModel()
 }
 

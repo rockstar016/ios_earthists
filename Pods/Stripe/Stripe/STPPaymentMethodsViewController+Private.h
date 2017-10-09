@@ -7,18 +7,23 @@
 //
 
 #import <Stripe/Stripe.h>
-#import "STPPromise.h"
-#import "STPPaymentMethod.h"
+
 #import "STPBackendAPIAdapter.h"
-#import "STPPaymentMethodTuple.h"
 #import "STPPaymentConfiguration.h"
+#import "STPPaymentMethod.h"
+#import "STPPaymentMethodTuple.h"
+#import "STPPromise.h"
 
 @interface STPPaymentMethodsViewController (Private)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 - (instancetype)initWithConfiguration:(STPPaymentConfiguration *)configuration
                            apiAdapter:(id<STPBackendAPIAdapter>)apiAdapter
                        loadingPromise:(STPPromise<STPPaymentMethodTuple *> *)loadingPromise
                                 theme:(STPTheme *)theme
+                      shippingAddress:(STPAddress *)shippingAddress
                              delegate:(id<STPPaymentMethodsViewControllerDelegate>)delegate;
+#pragma clang diagnostic pop
 
 @end

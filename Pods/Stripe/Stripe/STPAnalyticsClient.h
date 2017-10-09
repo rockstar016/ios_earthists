@@ -17,16 +17,16 @@
 
 + (void)initializeIfNeeded;
 
-+ (void)disableAnalytics;
++ (NSString *)tokenTypeFromParameters:(NSDictionary *)parameters;
 
-- (void)logRememberMeConversion:(BOOL)selected;
+- (void)addAdditionalInfo:(NSString *)info;
 
-- (void)logTokenCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration;
+- (void)clearAdditionalInfo;
 
-- (void)logRUMWithToken:(STPToken *)token
-          configuration:(STPPaymentConfiguration *)config
-               response:(NSHTTPURLResponse *)response
-                  start:(NSDate *)startTime
-                    end:(NSDate *)endTime;
+- (void)logTokenCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
+                                       tokenType:(NSString *)tokenType;
+
+- (void)logSourceCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
+                                       sourceType:(NSString *)sourceType;
 
 @end

@@ -1,16 +1,9 @@
-//
-//  EndPageController.swift
-//  Earthistic
-//
-//  Created by Sobura on 2/4/17.
-//  Copyright © 2017 Sobura. All rights reserved.
-//
-
 import UIKit
-
 class EndPageController: UIViewController {
+    
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var okBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         okBtn.layer.cornerRadius = 7
@@ -21,18 +14,18 @@ class EndPageController: UIViewController {
         contentLabel.attributedText = attrString
         contentLabel.sizeToFit()
     }
+    
     @IBAction func onTapOKButton(_ sender: AnyObject) {
-
-
-        let myControllers = self.navigationController?.viewControllers
-        
-        for mController in myControllers!
-        {
-            if mController is ViewController
-            {
-                self.navigationController?.popToViewController(mController, animated: true)
-                return
+        if let navigationController = navigationController {
+            let myViewControllers = navigationController.viewControllers
+            myViewControllers.forEach { myViewController in
+                if myViewController is ViewController {
+                    self.navigationController?.popToViewController(myViewController, animated: true)
+                    return
+                }
             }
         }
+        
+        
     }
 }

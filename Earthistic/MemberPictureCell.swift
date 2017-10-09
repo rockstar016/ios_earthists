@@ -12,6 +12,7 @@ class MemberPictureCell: UICollectionViewCell {
 
     @IBOutlet weak var MemberPicture: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.NameLabel.text = nil

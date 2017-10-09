@@ -8,9 +8,9 @@
 
 #import <Stripe/Stripe.h>
 
-@interface STPPaymentConfiguration (Private)
+@interface STPPaymentConfiguration ()
 
-@property(nonatomic, readonly)BOOL applePayEnabled;
+@property (nonatomic, assign, readonly) BOOL applePayEnabled;
 
 @end
 

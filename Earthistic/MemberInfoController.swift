@@ -11,18 +11,27 @@ import Alamofire
 
 class MemberInfoController: UIViewController {
    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var investBtn: UIButton!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var nameView: UIView!
-    @IBOutlet weak var myView: UIView!
+//    @IBOutlet weak var myView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameLabel1: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var MemberInfoLabel: UIBorderedLabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bottomButtonContainer: UIStackView!
+    @IBOutlet weak var bottomButtonContainerHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var memberInfoHeightConstraint: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var header: UIView!
+    
     var index : Int = 0
-    @IBOutlet weak var scrollView: UIScrollView!
-    var memberText : [String] = ["Who is she? She is you. She is me. She is everythin' in between. She is everyone. " +
+    
+    var memberText  = ["Who is she? She is you. She is me. She is everythin' in between. She is everyone. " +
         "She is no one. She is nowhere to be seen. So where can you find her? Where will she be? Keep watchin' our videos and maybe" +
             " you’ll see. The gypc and her wild companion roam free through space and time in love, freedom, truth and delicate beauty. She wanders constantly, fervently, dancin’ in wind, floatin’ on clouds, guided from within. Follow her energy" +
         " and find answers to all questions, keys to all mysteries, treasures you only dreamed you could possess of.",
@@ -56,37 +65,54 @@ class MemberInfoController: UIViewController {
             " the group were born and raised in Dandora, growing up in harsh conditions faced with extreme poverty as they were" +
         " from low-income families striving to make ends meet."]
     
-    var CauseName : [[String]] = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
+    var CauseName = [["CHOOSE LOVE CAUSE BIO","WATER IS LIFE CAUSE BIO"],["GENDER EQUITY CAUSE BIO"],["SUSTAINABLE LIVING CAUSE BIO"],["HEALTHY LIVING CAUSE BIO"],["INCOME EQUITY CAUSE BIO"],["WILDLIFE EQUITY CAUSE BIO"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         investBtn.layer.cornerRadius = 7
         index = MemberModel.sharedInstance.sequence
         nameLabel.text = MemberModel.sharedInstance.name
-        print(MemberModel.sharedInstance.name)
         nameLabel1.text = MemberModel.sharedInstance.name
         profileImage.image = UIImage(named: MemberModel.sharedInstance.profileImage)
         imageView.image = UIImage(named: MemberModel.sharedInstance.Image)
+        
+        displayCause()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 10
         let attrString = NSMutableAttributedString(string: memberText[MemberModel.sharedInstance.sequence])
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length ))
+        attrString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         MemberInfoLabel.attributedText = attrString
-
+        MemberInfoLabel.setNeedsLayout()
+        MemberInfoLabel.layoutIfNeeded()
         MemberInfoLabel.sizeToFit()
-        displayCause()
+        memberInfoHeightConstraint.constant = MemberInfoLabel.frame.height
+        let size = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        header.frame.size.height = size.height
+        tableView.tableHeaderView = header
+        tableView.layoutIfNeeded()
         createButton()
-        print(index)
     }
-    func createButton(){
-        let importBtnView : UIView = UIView()
-        var btns:[String] = []
+    
+    func createButton() {
+        buttonView.subviews.forEach { $0.removeFromSuperview() }
+        let importBtnView = UIView()
+        var btns = [String]()
         switch index {
         case 0:
             btns = ["1", "2"]
             break
         case 1:
-//            btns = ["1", "2", "3","4","5"]
             btns = ["1", "2", "3","4","5"]
             break
         case 2:
@@ -105,30 +131,29 @@ class MemberInfoController: UIViewController {
         default:
             break
         }
-        let btncount = btns.count
-        importBtnView.frame = CGRect(x: 0, y: 0, width: 50 * btncount, height: 50)
+        
+        buttonView.layoutIfNeeded()
+        let btnCount = btns.count
+        let buttonViewHeight = Int(buttonView.frame.height)
+        let buttonViewWidht = Int(buttonView.frame.width)
+        let btnSize = Int(Double(min(buttonViewHeight, buttonViewWidht / btnCount)) * 0.65)
+        let spacing = Int(Double(min(buttonViewHeight, buttonViewWidht / btnCount)) * 0.1)
 
-        var i = 0
-        for btn in btns
-        {
+        for (i, btn) in btns.enumerated() {
             let btnView = UIButton()
-            
-            btnView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            btnView.setBackgroundImage(UIImage(named: btn), for: UIControlState())
-            let dx = importBtnView.frame.width/CGFloat(btncount)
-            btnView.center = CGPoint(x: dx/2 + CGFloat(i) * dx, y: importBtnView.frame.height/2)
+            btnView.frame = CGRect(x: (btnSize + spacing) * i, y: (buttonViewHeight - btnSize) / 2, width: btnSize, height: btnSize)
+            btnView.setBackgroundImage(UIImage(named: btn), for: .normal)
             btnView.tag = Int(btn)!
-            btnView.addTarget(self, action: #selector(self.btnTapped(_:)), for: .touchUpInside)
+            btnView.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
             importBtnView.addSubview(btnView)
-            i = i + 1
         }
-        importBtnView.center = CGPoint(x:self.buttonView.frame.width/2, y:self.buttonView.frame.height/2)
-        self.buttonView.addSubview(importBtnView)
+        importBtnView.layoutIfNeeded()
+        importBtnView.frame = CGRect(x: (buttonViewWidht - ((btnSize + spacing) * btnCount)) / 2, y: 0, width: (btnSize + spacing) * btnCount, height: 50)
+        buttonView.addSubview(importBtnView)
         
     }
     
-    func btnTapped(_ sender:AnyObject)
-    {
+    @objc func btnTapped(_ sender:AnyObject) {
         switch index {
         case 0:
             if sender.tag == 1 {
@@ -246,62 +271,70 @@ class MemberInfoController: UIViewController {
     }
     
     func displayCause()  {
-        let width = buttonView.bounds.width
-        let heightofbuttonView = buttonView.bounds.height
-        let heightofmemberInfoLabel = MemberInfoLabel.bounds.height
+        bottomButtonContainer.layoutIfNeeded()
+        let buttonWidth = Int(bottomButtonContainer.frame.width - 16)
+        let buttonHeight = 40
 
-        for i in 0...CauseName[index].count - 1{
-            let button : UIButton = UIButton()
+        for (i, name) in CauseName[index].enumerated() {
+            let button = UIButton()
             button.tag = index * 10 + i
-            button.setTitle(CauseName[index][i], for: UIControlState())
-            button.frame = CGRect(x: 8, y: 30 + heightofbuttonView * 2 + heightofmemberInfoLabel + CGFloat(i * 45), width: width, height: 40)
+            button.setTitle(name, for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonHeight)
             button.titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 15)
             button.backgroundColor = UIColor(red: 67/255, green: 255/255, blue: 125/255, alpha: 1.0)
             button.layer.cornerRadius = 7
-            button.addTarget(self, action: #selector(self.pressed(_:)), for: .touchUpInside)
-            self.scrollView.addSubview(button)
+            button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+            self.bottomButtonContainer.addArrangedSubview(button)
         }
+        bottomButtonContainerHeightConstraint.constant = CGFloat((buttonHeight + 16) * CauseName[index].count)
         
     }
-    func pressed(_ sender : UIButton){
+    
+    @objc func pressed(_ sender : UIButton){
         let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "causeView") as! CauseViewController
         popoverContent.index = Int(sender.tag / 10)
         popoverContent.selectedbutton = sender.tag % 10
         self.present(popoverContent, animated: true, completion: nil)
     }
-    override func viewDidLayoutSubviews() {
-        let heightofbuttonView = buttonView.bounds.height
-        let heightofmemberInfoLabel = MemberInfoLabel.bounds.height
-        scrollView.contentSize = CGSize(width: self.myView.frame.size.width, height: 40 + heightofbuttonView * 2 + heightofmemberInfoLabel + CGFloat(CauseName[index].count * 45))
-    }
+    
     @IBAction func onTapBackBtn(_ sender: AnyObject) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func onTapInvestBtn(_ sender: AnyObject) {
         let token = MemberModel.sharedInstance.user_Token
         if token == "" {
             performSegue(withIdentifier: "ToInvestPage", sender: self)
-        }else
-        {
+        } else {
             let params = [
                 "token" : token
             ]
-            MyAlamofire.POST(CHECKTOKEN_API, parameters: params as [String : AnyObject],showLoading: true,showSuccess: false,showError: true) { (result, responseObject)
-                in
-                if(result){
-                    let result = responseObject.object(forKey: "result") as! Bool
-                    if result == true {
+            _ = MyAlamofire.POST(CHECKTOKEN_API, parameters: params as [String : AnyObject],showLoading: true,showSuccess: false,showError: true) { result, responseObject in
+                if result {
+                    if let result = responseObject.object(forKey: "result") as? Bool, result {
                         self.performSegue(withIdentifier: "FromMemberToLink", sender: self)
-                    }else
-                    {
-                        let alertController = UIAlertController(title: "Caution", message: "Connection Error.", preferredStyle: UIAlertControllerStyle.alert)
-                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                        }
-                        alertController.addAction(okAction)
-                        self.present(alertController, animated: true, completion: nil)
+                    } else {
+                        self.showOkAlert(customTitle: "Caution", customMessage: "Connection Error")
                     }
                 }
             }
         }
     }
+}
+
+extension MemberInfoController : UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    }
+
+    
 }

@@ -15,13 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface STPPaymentMethodTuple : NSObject
 
 + (instancetype)tupleWithPaymentMethods:(NSArray<id<STPPaymentMethod>> *)paymentMethods
-                  selectedPaymentMethod:(id<STPPaymentMethod>)selectedPaymentMethod;
+                  selectedPaymentMethod:(nullable id<STPPaymentMethod>)selectedPaymentMethod;
 
 + (instancetype)tupleWithCardTuple:(STPCardTuple *)cardTuple
                    applePayEnabled:(BOOL)applePayEnabled;
 
-@property(nonatomic, nullable, readonly)id<STPPaymentMethod> selectedPaymentMethod;
-@property(nonatomic, readonly)NSArray<id<STPPaymentMethod>> *paymentMethods;
+@property (nonatomic, nullable, readonly) id<STPPaymentMethod> selectedPaymentMethod;
+@property (nonatomic, readonly) NSArray<id<STPPaymentMethod>> *paymentMethods;
 
 @end
 

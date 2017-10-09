@@ -7,17 +7,19 @@
 //
 
 #import "STPFormTextField.h"
-#import "STPCardValidator.h"
-#import "STPPhoneNumberValidator.h"
+
 #import "NSString+Stripe.h"
+#import "STPCardValidator.h"
 #import "STPDelegateProxy.h"
+#import "STPPhoneNumberValidator.h"
 #import "STPWeakStrongMacros.h"
 
 #define FAUXPAS_IGNORED_IN_METHOD(...)
+#define FAUXPAS_IGNORED_ON_LINE(...)
 
 @interface STPTextFieldDelegateProxy : STPDelegateProxy<UITextFieldDelegate>
-@property(nonatomic, assign)STPFormTextFieldAutoFormattingBehavior autoformattingBehavior;
-@property(nonatomic, assign)BOOL selectionEnabled;
+@property (nonatomic, assign) STPFormTextFieldAutoFormattingBehavior autoformattingBehavior;
+@property (nonatomic, assign) BOOL selectionEnabled;
 @end
 
 @implementation STPTextFieldDelegateProxy
@@ -72,10 +74,10 @@
 typedef NSAttributedString* (^STPFormTextTransformationBlock)(NSAttributedString *inputText);
 
 @interface STPFormTextField()
-@property(nonatomic)STPTextFieldDelegateProxy *delegateProxy;
-@property(nonatomic, copy)STPFormTextTransformationBlock textFormattingBlock;
+@property (nonatomic) STPTextFieldDelegateProxy *delegateProxy;
+@property (nonatomic, copy) STPFormTextTransformationBlock textFormattingBlock;
 // This property only exists to disable keyboard loading in Travis CI due to a crash that occurs while trying to load the keyboard. Don't use it outside of tests.
-@property(nonatomic)BOOL skipsReloadingInputViews;
+@property (nonatomic) BOOL skipsReloadingInputViews;
 @end
 
 @implementation STPFormTextField
@@ -108,6 +110,11 @@ typedef NSAttributedString* (^STPFormTextTransformationBlock)(NSAttributedString
         case STPFormTextFieldAutoFormattingBehaviorNone:
         case STPFormTextFieldAutoFormattingBehaviorExpiration:
             self.textFormattingBlock = nil;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+            if ([self respondsToSelector:@selector(setTextContentType:)]) {
+                self.textContentType = nil; FAUXPAS_IGNORED_ON_LINE(APIAvailability);
+            }
+#endif
             break;
         case STPFormTextFieldAutoFormattingBehaviorCardNumbers:
             self.textFormattingBlock = ^NSAttributedString *(NSAttributedString *inputString) {
@@ -133,6 +140,11 @@ typedef NSAttributedString* (^STPFormTextTransformationBlock)(NSAttributedString
                 }
                 return [attributedString copy];
             };
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+            if ([self respondsToSelector:@selector(setTextContentType:)]) {
+                self.textContentType = UITextContentTypeCreditCardNumber; FAUXPAS_IGNORED_ON_LINE(APIAvailability);
+            }
+#endif
             break;
         case STPFormTextFieldAutoFormattingBehaviorPhoneNumbers: {
             WEAK(self);
@@ -145,6 +157,11 @@ typedef NSAttributedString* (^STPFormTextTransformationBlock)(NSAttributedString
                 NSDictionary *attributes = [[self class] attributesForAttributedString:inputString];
                 return [[NSAttributedString alloc] initWithString:phoneNumber attributes:attributes];
             };
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+            if ([self respondsToSelector:@selector(setTextContentType:)]) {
+                self.textContentType = UITextContentTypeTelephoneNumber; FAUXPAS_IGNORED_ON_LINE(APIAvailability);
+            }
+#endif
             break;
         }
     }
@@ -166,10 +183,6 @@ typedef NSAttributedString* (^STPFormTextTransformationBlock)(NSAttributedString
             [self.formDelegate formTextFieldDidBackspaceOnEmpty:self];
         }
     }
-}
-
-- (CGSize)measureTextSize {
-    return self.attributedText.size;
 }
 
 - (void)setText:(NSString *)text {

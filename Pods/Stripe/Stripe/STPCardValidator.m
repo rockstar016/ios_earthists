@@ -7,21 +7,14 @@
 //
 
 #import "STPCardValidator.h"
+
 #import "STPBINRange.h"
+#import "NSCharacterSet+Stripe.h"
 
 @implementation STPCardValidator
 
 + (NSString *)sanitizedNumericStringForString:(NSString *)string {
-    return stringByRemovingCharactersFromSet(string, invertedAsciiDigitCharacterSet());
-}
-
-static NSCharacterSet *invertedAsciiDigitCharacterSet() {
-    static NSCharacterSet *cs;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-    });
-    return cs;
+    return stringByRemovingCharactersFromSet(string, [NSCharacterSet stp_invertedAsciiDigitCharacterSet]);
 }
 
 + (NSString *)stringByRemovingSpacesFromString:(NSString *)string {
@@ -35,8 +28,10 @@ static NSString * _Nonnull stringByRemovingCharactersFromSet(NSString * _Nonnull
         NSMutableString *newString = [[string substringWithRange:NSMakeRange(0, range.location)] mutableCopy];
         NSUInteger lastPosition = NSMaxRange(range);
         while (lastPosition < string.length) {
-            range = [string rangeOfCharacterFromSet:cs options:0 range:NSMakeRange(lastPosition, string.length - lastPosition)];
-            if (range.location == NSNotFound) break;
+            range = [string rangeOfCharacterFromSet:cs options:(NSStringCompareOptions)kNilOptions range:NSMakeRange(lastPosition, string.length - lastPosition)];
+            if (range.location == NSNotFound) {
+                break;
+            }
             if (range.location != lastPosition) {
                 [newString appendString:[string substringWithRange:NSMakeRange(lastPosition, range.location - lastPosition)]];
             }
@@ -52,7 +47,7 @@ static NSString * _Nonnull stringByRemovingCharactersFromSet(NSString * _Nonnull
 }
 
 + (BOOL)stringIsNumeric:(NSString *)string {
-    return [string rangeOfCharacterFromSet:invertedAsciiDigitCharacterSet()].location == NSNotFound;
+    return [string rangeOfCharacterFromSet:[NSCharacterSet stp_invertedAsciiDigitCharacterSet]].location == NSNotFound;
 }
 
 + (STPCardValidationState)validationStateForExpirationMonth:(NSString *)expirationMonth {
@@ -85,16 +80,20 @@ static NSString * _Nonnull stringByRemovingCharactersFromSet(NSString * _Nonnull
     
     NSString *sanitizedMonth = [self sanitizedNumericStringForString:expirationMonth];
     NSString *sanitizedYear = [self sanitizedNumericStringForString:expirationYear];
-    
+
     switch (sanitizedYear.length) {
         case 0:
         case 1:
             return STPCardValidationStateIncomplete;
         case 2: {
-            if (sanitizedYear.integerValue == moddedYear) {
-                return sanitizedMonth.integerValue >= currentMonth ? STPCardValidationStateValid : STPCardValidationStateInvalid;
+            if ([self validationStateForExpirationMonth:sanitizedMonth] == STPCardValidationStateInvalid) {
+                return STPCardValidationStateInvalid;
             } else {
-                return sanitizedYear.integerValue > moddedYear ? STPCardValidationStateValid : STPCardValidationStateInvalid;
+                if (sanitizedYear.integerValue == moddedYear) {
+                    return sanitizedMonth.integerValue >= currentMonth ? STPCardValidationStateValid : STPCardValidationStateInvalid;
+                } else {
+                    return sanitizedYear.integerValue > moddedYear ? STPCardValidationStateValid : STPCardValidationStateInvalid;
+                }
             }
         }
         default:
@@ -133,15 +132,15 @@ static NSString * _Nonnull stringByRemovingCharactersFromSet(NSString * _Nonnull
     }
 }
 
-+ (STPCardValidationState)validationStateForNumber:(nonnull NSString *)cardNumber
++ (STPCardValidationState)validationStateForNumber:(NSString *)cardNumber
                                validatingCardBrand:(BOOL)validatingCardBrand {
     
     NSString *sanitizedNumber = [self stringByRemovingSpacesFromString:cardNumber];
-    if (![self stringIsNumeric:sanitizedNumber]) {
-        return STPCardValidationStateInvalid;
-    }
     if (sanitizedNumber.length == 0) {
         return STPCardValidationStateIncomplete;
+    }
+    if (![self stringIsNumeric:sanitizedNumber]) {
+        return STPCardValidationStateInvalid;
     }
     STPBINRange *binRange = [STPBINRange mostSpecificBINRangeForNumber:sanitizedNumber];
     if (binRange.brand == STPCardBrandUnknown && validatingCardBrand) {
@@ -229,10 +228,6 @@ static NSString * _Nonnull stringByRemovingCharactersFromSet(NSString * _Nonnull
         [set addObject:@(binRange.length)];
     }
     return [set copy];
-}
-
-+ (NSInteger)lengthForCardBrand:(STPCardBrand)brand {
-    return [self maxLengthForCardBrand:brand];
 }
 
 + (NSInteger)maxLengthForCardBrand:(STPCardBrand)brand {

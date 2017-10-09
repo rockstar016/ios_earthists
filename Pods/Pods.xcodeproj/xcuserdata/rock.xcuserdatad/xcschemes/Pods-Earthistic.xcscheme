@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5DF8D6803084114CE42A9F7A6178318C"
+               BlueprintIdentifier = "926A32229EBCFC70A3A5F21346145202"
                BuildableName = "Pods_Earthistic.framework"
                BlueprintName = "Pods-Earthistic"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5DF8D6803084114CE42A9F7A6178318C"
+            BlueprintIdentifier = "926A32229EBCFC70A3A5F21346145202"
             BuildableName = "Pods_Earthistic.framework"
             BlueprintName = "Pods-Earthistic"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5DF8D6803084114CE42A9F7A6178318C"
-            BuildableName = "Pods_Earthistic.framework"
-            BlueprintName = "Pods-Earthistic"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

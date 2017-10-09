@@ -11,6 +11,7 @@ import Stripe
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Stripe.setDefaultPublishableKey("pk_live_yb8coGpyOukzs1bAP9Nqbjui")
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        IQKeyboardManager.sharedManager().enable = true
         return true
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

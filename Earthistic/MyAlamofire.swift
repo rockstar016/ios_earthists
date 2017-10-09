@@ -13,12 +13,13 @@ import MBProgressHUD
 import IQKeyboardManagerSwift
 import NVActivityIndicatorView
 
-var spiningActivity:MBProgressHUD?=nil
+var spiningActivity: MBProgressHUD? = nil
 
 var loadingView:UIView = UIView()
 var loadingAcitivity:NVActivityIndicatorView?=nil
-var curviewcontroller:UIViewController?=nil
+var curviewcontroller: UIViewController?=nil
 let KEYWINDOW = UIApplication.shared.keyWindow
+
 class MyAlamofire: SessionManager {
     
     struct Static {
@@ -30,22 +31,14 @@ class MyAlamofire: SessionManager {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 60.0
         configuration.timeoutIntervalForResource = 60.0
-        //                configuration.URLCache?.removeAllCachedResponses()
         let manager = MyAlamofire(configuration: configuration)
         Static.instance = manager
-        //                Static.instance?.session.configuration.timeoutIntervalForRequest = 30.0
-        //                Static.instance?.session.configuration.timeoutIntervalForResource = 60.0
-        //                Static.instance?.session.configuration.URLCache?.removeAllCachedResponses()
     }()
     
     static var spiningShowed:Bool = false
     
     class var shareInstance: MyAlamofire {
         get {
-            //            struct Static {
-            //                static var instance: FHAlamofire? = nil
-            //                static var token: Int = 0
-            //            }
             _ = MyAlamofire.__once
             return Static.instance!
         }
@@ -149,21 +142,19 @@ class MyAlamofire: SessionManager {
             //            .validate().responseJSON { response in
             switch response.result {
             case .success(let JSON):
-                let res = JSON as! NSDictionary
-                if let ok = res["result"] as? Bool {
-                    if ok{
+                if let res = JSON as? NSDictionary {
+                    if let ok = res["result"] as? Bool, ok {
                         if res["message"] != nil && showSuccess{
                             self.displaySuccess(res["message"] as? String ?? "")
                         }
                         completionHandler( true,res)
-                    }else{
+                    } else {
                         if res["message"] != nil && showError{
                             self.displayError(res["message"] as! String)
                         }
                         completionHandler( false,res)
                     }
                 }
-                
             case .failure(let error):
                 print(error)
                 switch response.response!.statusCode {
@@ -192,15 +183,14 @@ class MyAlamofire: SessionManager {
             //            "Authorization": "Bearer " + FHUserDefaults.getUserToken()
         ]
         print(headers)
-        return MyAlamofire.shareInstance.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).validate().responseJSON{ response in
+        return MyAlamofire.shareInstance.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
            
             switch response.result {
             case .success(let JSON):
-                completionHandler( true,JSON as AnyObject)
+                completionHandler(true, JSON as AnyObject)
             case .failure(let error):
                 print(error)
-                
-                completionHandler( false,[] as AnyObject)
+                completionHandler(false, [] as AnyObject)
             }
             hideIndicator()
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -209,10 +199,12 @@ class MyAlamofire: SessionManager {
     
     class func displaySuccess(_ message:String){
         // Display an alert message
-        let myAlert = UIAlertController(title: "Success", message:message, preferredStyle: UIAlertControllerStyle.alert);
+        let myAlert = UIAlertController(title: "Success", message: message, preferredStyle: UIAlertControllerStyle.alert);
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
         myAlert.addAction(okAction);
-        KEYWINDOW?.topMostController()?.present(myAlert, animated: true, completion: nil)
+        if let topViewController = KEYWINDOW?.topMostController() {
+            topViewController.present(myAlert, animated: true, completion: nil)
+        }
     }
     
     class func displayError(_ message:String){
@@ -220,45 +212,33 @@ class MyAlamofire: SessionManager {
         let myAlert = UIAlertController(title: "Alert", message:message, preferredStyle: UIAlertControllerStyle.alert);
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
         myAlert.addAction(okAction);
-        KEYWINDOW?.topMostController()?.present(myAlert, animated: true, completion: nil)
+        if let topViewController = KEYWINDOW?.topMostController() {
+            topViewController.present(myAlert, animated: true, completion: nil)
+        }
     }
     
-    class  func showIndicator(_ vc:UIViewController)
+    class  func showIndicator(_ vc: UIViewController? = KEYWINDOW?.topMostController())
     {
         curviewcontroller = vc
         
-        let curframe = curviewcontroller?.view.frame
-        
-        loadingView = UIView(frame: (curviewcontroller?.view.frame)!)
-        loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        loadingAcitivity = NVActivityIndicatorView(frame: CGRect(x: (curframe?.width)!/2 - 30, y: (curframe?.height)!/2-30, width: 60, height: 60), type: .ballScale, color: self.UIColorFromHex(0xEC644B), padding: CGFloat(0))
-        loadingAcitivity!.startAnimating()
-        loadingView.addSubview(loadingAcitivity!)
-        
-        vc.view.isUserInteractionEnabled = false
-        
-        if loadingView.superview == nil{
-            vc.view.addSubview(loadingView)
+        if let viewController = vc {
+            let curframe = viewController.view.frame
+            
+            loadingView = UIView(frame: curframe)
+            loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+            loadingAcitivity = NVActivityIndicatorView(frame: CGRect(x: curframe.width / 2 - 30, y: curframe.height / 2 - 30, width: 60, height: 60), type: .ballScale, color: self.UIColorFromHex(0xEC644B), padding: CGFloat(0))
+            loadingAcitivity!.startAnimating()
+            loadingView.addSubview(loadingAcitivity!)
+            viewController.view.isUserInteractionEnabled = false
+            
+            if loadingView.superview == nil {
+                viewController.view.addSubview(loadingView)
+            }
         }
+        
+        
     }
 
-    class  func showIndicator() {
-        curviewcontroller = KEYWINDOW?.topMostController()
-        let curframe = curviewcontroller?.view.frame
-        
-        loadingView = UIView(frame: (curviewcontroller?.view.frame)!)
-        loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        loadingAcitivity = NVActivityIndicatorView(frame: CGRect(x: (curframe?.width)!/2 - 30, y: (curframe?.height)!/2-30, width: 60, height: 60), type: .ballScale, color: self.UIColorFromHex(0xEC644B), padding: CGFloat(0))
-        loadingAcitivity!.startAnimating()
-        loadingView.addSubview(loadingAcitivity!)
-        
-        KEYWINDOW?.isUserInteractionEnabled = false
-        
-        if loadingView.superview == nil{
-            KEYWINDOW?.topMostController()?.view.addSubview(loadingView)
-        }
-    }
-    
     class func UIColorFromHex(_ rgbValue:UInt32, alpha:Double=1.0)->UIColor {
         let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
         let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0

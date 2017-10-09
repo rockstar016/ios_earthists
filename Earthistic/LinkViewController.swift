@@ -1,11 +1,3 @@
-//
-//  LinkViewController.swift
-//  Earthistic
-//
-//  Created by Sobura on 1/31/17.
-//  Copyright © 2017 Sobura. All rights reserved.
-//
-
 import UIKit
 
 class LinkViewController: UIViewController {

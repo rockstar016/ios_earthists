@@ -7,9 +7,10 @@
 //
 
 #import "STPToken.h"
-#import "STPCard.h"
-#import "STPBankAccount.h"
+
 #import "NSDictionary+Stripe.h"
+#import "STPBankAccount.h"
+#import "STPCard.h"
 
 @interface STPToken()
 @property (nonatomic, nonnull) NSString *tokenId;
@@ -22,6 +23,8 @@
 
 @implementation STPToken
 
+#pragma mark - Description
+
 - (NSString *)description {
     return self.tokenId ?: @"Unknown token";
 }
@@ -31,6 +34,8 @@
     NSString *livemode = self.livemode ? @"live mode" : @"test mode";
     return [NSString stringWithFormat:@"%@ (%@)", token, livemode];
 }
+
+#pragma mark - Equality
 
 - (BOOL)isEqual:(id)object {
     return [self isEqualToToken:object];
@@ -61,13 +66,13 @@
            [self.card isEqual:object.card] && [self.tokenId isEqualToString:object.tokenId] && [self.created isEqualToDate:object.created];
 }
 
-#pragma mark STPSource
+#pragma mark - STPSourceProtocol
 
 - (NSString *)stripeID {
     return self.tokenId;
 }
 
-#pragma mark STPAPIResponseDecodable
+#pragma mark - STPAPIResponseDecodable
 
 + (NSArray *)requiredFields {
     return @[@"id", @"livemode", @"created"];
